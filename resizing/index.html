@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* Встановлюємо висоту сторінки на весь екран */
+      margin: 0;
+    }
+
+    .scaled-div {
+      width: 500px; /* Початкова ширина div */
+      height: 300px; /* Початкова висота div */
+      background-color: red; /* Червоний колір фону */
+      transition: transform 0.05s ease; /* Плавний перехід */
+    }
+  </style>
+  <script>
+    function scaleDiv() {
+      var div = document.getElementById("myDiv");
+      var screenWidth = window.innerWidth;
+      var screenHeight = window.innerHeight;
+      var scaleFactor = Math.min(screenWidth / 1000, screenHeight / 500); // Змінюємо значення 1000 та 500 на бажані розміри, від яких залежить масштабування
+
+      div.style.transform = "scale(" + scaleFactor + ")";
+    }
+
+    // Викликати функцію при завантаженні сторінки та при зміні розмірів вікна
+    window.onload = scaleDiv;
+    window.onresize = scaleDiv;
+  </script>
+</head>
+<body>
+  <div id="myDiv" class="scaled-div">Вміст</div>
+</body>
+</html>
